@@ -2,6 +2,7 @@
   "name": "cetincetindag-blog",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "node build.js",
     "test": "node --test build.test.js"
