@@ -22,7 +22,9 @@ export function applyFallbacks(frontmatter, slug) {
     .join(' ');
   return {
     title: frontmatter.title || titleFromSlug,
-    date: frontmatter.date || today,
+    date: frontmatter.date instanceof Date
+      ? new Intl.DateTimeFormat('en-CA').format(frontmatter.date)
+      : (frontmatter.date ? String(frontmatter.date) : today),
     tags: Array.isArray(frontmatter.tags) ? frontmatter.tags : frontmatter.tags ? [String(frontmatter.tags)] : [],
     excerpt: frontmatter.excerpt || '',
   };
