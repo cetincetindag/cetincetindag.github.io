@@ -1,0 +1,192 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #111;
+  color: #999;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  line-height: 1.8;
+  padding: 48px 24px;
+}
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ── Header ─────────────────────────────────── */
+
+.site-header {
+  margin-bottom: 48px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #222;
+}
+
+.site-title {
+  font-size: 18px;
+  color: #ddd;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.site-subtitle {
+  font-size: 12px;
+  color: #444;
+  margin-top: 4px;
+}
+
+/* ── Post list (index) ───────────────────────── */
+
+.post-list {
+  list-style: none;
+}
+
+.post-item {
+  margin-bottom: 32px;
+}
+
+.post-title a {
+  font-size: 14px;
+  font-weight: bold;
+  color: #ddd;
+  text-decoration: none;
+}
+
+.post-title a:hover {
+  color: #fff;
+}
+
+.post-meta {
+  font-size: 12px;
+  color: #555;
+  margin-top: 3px;
+  margin-bottom: 6px;
+}
+
+.post-excerpt {
+  font-size: 12px;
+  color: #777;
+}
+
+/* ── Tags ────────────────────────────────────── */
+
+.tag {
+  color: #d97706;
+  font-size: 11px;
+}
+
+.tag + .tag::before {
+  content: ' ';
+}
+
+/* ── Post page ───────────────────────────────── */
+
+.back-link {
+  font-size: 12px;
+  color: #555;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 32px;
+}
+
+.back-link:hover {
+  color: #999;
+}
+
+.post-header {
+  margin-bottom: 32px;
+}
+
+.post-header h1 {
+  font-size: 18px;
+  color: #ddd;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.post-header .post-meta {
+  margin-bottom: 8px;
+}
+
+.post-divider {
+  border: none;
+  border-top: 1px solid #222;
+  margin: 24px 0;
+}
+
+/* ── Post body ───────────────────────────────── */
+
+.post-body {
+  color: #999;
+}
+
+.post-body h1,
+.post-body h2,
+.post-body h3 {
+  color: #ddd;
+  margin: 28px 0 12px;
+}
+
+.post-body p {
+  margin-bottom: 16px;
+}
+
+.post-body a {
+  color: #d97706;
+  text-decoration: none;
+}
+
+.post-body a:hover {
+  text-decoration: underline;
+}
+
+.post-body code {
+  background: #1a1a1a;
+  padding: 1px 5px;
+  border-radius: 2px;
+  font-size: 13px;
+}
+
+.post-body pre {
+  background: #1a1a1a;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  border-left: 2px solid #333;
+}
+
+.post-body pre code {
+  background: none;
+  padding: 0;
+}
+
+.post-body blockquote {
+  border-left: 2px solid #333;
+  padding-left: 16px;
+  color: #666;
+  margin: 16px 0;
+}
+
+.post-body ul,
+.post-body ol {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.post-body li {
+  margin-bottom: 4px;
+}
+
+/* ── Footer ──────────────────────────────────── */
+
+.site-footer {
+  margin-top: 64px;
+  padding-top: 16px;
+  border-top: 1px solid #1a1a1a;
+  font-size: 11px;
+  color: #444;
+}
