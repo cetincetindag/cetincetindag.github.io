@@ -23,7 +23,7 @@ export function applyFallbacks(frontmatter, slug) {
   return {
     title: frontmatter.title || titleFromSlug,
     date: frontmatter.date || today,
-    tags: frontmatter.tags || [],
+    tags: Array.isArray(frontmatter.tags) ? frontmatter.tags : frontmatter.tags ? [String(frontmatter.tags)] : [],
     excerpt: frontmatter.excerpt || '',
   };
 }
@@ -36,8 +36,16 @@ export function sortPosts(posts) {
 
 const currentYear = new Date().getFullYear();
 
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
 function renderTags(tags) {
-  return tags.map(t => `<span class="tag">${t}</span>`).join(' ');
+  return tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join(' ');
 }
 
 function renderPostPage(post) {
@@ -46,15 +54,15 @@ function renderPostPage(post) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${post.title} — cetincetindag</title>
+  <title>${escapeHtml(post.title)} — cetincetindag</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <a class="back-link" href="index.html">← back</a>
     <div class="post-header">
-      <h1>${post.title}</h1>
-      <div class="post-meta">${post.date}${post.tags.length ? ' &nbsp;·&nbsp; ' + renderTags(post.tags) : ''}</div>
+      <h1>${escapeHtml(post.title)}</h1>
+      <div class="post-meta">${escapeHtml(post.date)}${post.tags.length ? ' &nbsp;·&nbsp; ' + renderTags(post.tags) : ''}</div>
     </div>
     <hr class="post-divider">
     <div class="post-body">
@@ -69,9 +77,9 @@ function renderPostPage(post) {
 function renderIndexPage(posts) {
   const items = posts.map(post => `
     <li class="post-item">
-      <div class="post-title"><a href="${post.slug}.html">${post.title}</a></div>
-      <div class="post-meta">${post.date}${post.tags.length ? ' &nbsp;·&nbsp; ' + renderTags(post.tags) : ''}</div>
-      ${post.excerpt ? `<div class="post-excerpt">${post.excerpt}</div>` : ''}
+      <div class="post-title"><a href="${escapeHtml(post.slug)}.html">${escapeHtml(post.title)}</a></div>
+      <div class="post-meta">${escapeHtml(post.date)}${post.tags.length ? ' &nbsp;·&nbsp; ' + renderTags(post.tags) : ''}</div>
+      ${post.excerpt ? `<div class="post-excerpt">${escapeHtml(post.excerpt)}</div>` : ''}
     </li>`).join('\n');
 
   return `<!DOCTYPE html>
